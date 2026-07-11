@@ -1,12 +1,12 @@
 # RAG-Based Document Intelligence System
 
-A full-stack Retrieval-Augmented Generation app for chatting with your own PDFs. Upload a document, ask questions in plain English, and get answers that are grounded in the actual text — with page-level source citations so you can verify every claim instead of just trusting the model.
+A full-stack Retrieval-Augmented Generation app for chatting with your own PDFs. Upload a document, ask questions in plain English, and get answers that are grounded in the actual text - with page level source citations so you can verify every claim instead of just trusting the model.
 
 I built this after getting tired of skimming long PDFs for one specific answer. The goal was something that actually cites where an answer came from, rather than just confidently making things up.
 
 **Why this stack**
 
-LangChain handles the document splitting logic so I didn't have to hand-roll a text chunker. ChromaDB is the vector store — it's local-first, persists to disk, and doesn't need a separate database server to stand up for a project this size. Groq is doing inference because their LPU-based API is genuinely fast for a chat-first UX; waiting 8 seconds per response kills the feel of a "real-time" assistant. FastAPI streams tokens back over Server-Sent Events so the frontend can render partial answers as they're generated, the same way ChatGPT does.
+LangChain handles the document splitting logic so I didn't have to hand-roll a text chunker. ChromaDB is the vector store - it's local-first, persists to disk, and doesn't need a separate database server to stand up for a project this size. Groq is doing inference because their LPU-based API is genuinely fast for a chat-first UX; waiting 8 seconds per response kills the feel of a "real-time" assistant. FastAPI streams tokens back over Server-Sent Events so the frontend can render partial answers as they're generated, the same way ChatGPT does.
 
 **What it does**
 
