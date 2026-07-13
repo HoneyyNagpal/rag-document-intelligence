@@ -4,6 +4,12 @@ A full-stack Retrieval-Augmented Generation app for chatting with your own PDFs.
 
 I built this after getting tired of skimming long PDFs for one specific answer. The goal was something that actually cites where an answer came from, rather than just confidently making things up.
 
+**Example: chatting with a research paper**
+
+![Chat interface with source citations](docs/screenshot-chat.png)
+
+The example above shows the app answering questions about the "Attention Is All You Need" paper, with responses grounded in specific pages of the source document.
+
 **Why this stack**
 
 LangChain handles the document splitting logic so I didn't have to hand-roll a text chunker. ChromaDB is the vector store - it's local-first, persists to disk, and doesn't need a separate database server to stand up for a project this size. Groq is doing inference because their LPU-based API is genuinely fast for a chat-first UX; waiting 8 seconds per response kills the feel of a "real-time" assistant. FastAPI streams tokens back over Server-Sent Events so the frontend can render partial answers as they're generated, the same way ChatGPT does.
